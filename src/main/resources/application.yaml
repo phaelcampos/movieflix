@@ -15,3 +15,7 @@ spring:
 
   flyway:
     enabled: true
+
+movieFlix:
+  security:
+    secret: "palavra-super-secreta-melhor-usar-como-]ambient-var"
