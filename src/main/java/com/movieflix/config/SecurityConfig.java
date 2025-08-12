@@ -1,5 +1,6 @@
 package com.movieflix.config;
 
+import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,7 @@ public class SecurityConfig {
                     .csrf(csfr -> csfr.disable())
                     .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                            .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                             .requestMatchers(HttpMethod.POST, "/movieflix/auth/register").permitAll()
                             .requestMatchers(HttpMethod.POST, "/movieflix/auth/login").permitAll()
                             .anyRequest().authenticated()
